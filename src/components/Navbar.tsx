@@ -25,7 +25,9 @@ const Navbar = () => {
                         </li>
                     </ul>
                     </div>
-                    <Link href="/" className="text-xl  text-[#ff4c11] font-mono font-bold">Just Phones</Link>
+                    <Link href="/" className="text-xl text-[#ff4c11] font-mono font-bold flex items-center gap-2">
+                        <img src="/phonora_logo.png" alt="Phonora Logo" className="h-10 w-auto" />
+                    </Link>
                 </div>
             
                 <div className="navbar-center hidden lg:flex">
