@@ -1,2 +1,16 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+
+.menu li a:active,
+.menu li a:focus {
+  background-color: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+.menu li a:hover {
+  background-color: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+  text-decoration: underline !important;
+}
