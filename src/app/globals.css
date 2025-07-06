@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-
 .menu li a:active,
 .menu li a:focus {
   background-color: transparent !important;
