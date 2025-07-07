@@ -57,12 +57,12 @@ const Navbar = () => {
                             <span className="hidden md:inline text-sm">Login</span>
                         </Link>
                     </button>
-                    <button className="btn btn-lg bg-[#ff4c11] text-white">
-                        <Link href='/phones' className="flex gap-2 items-center">
+                    <Link href="/cart">
+                        <button className="btn btn-lg bg-[#ff4c11] text-white">
                             <FaCartPlus />
                             <span className="badge badge-sm">0</span>
-                        </Link>
-                    </button>
+                        </button>
+                    </Link>
                 </div>
             </div>
         </nav>
