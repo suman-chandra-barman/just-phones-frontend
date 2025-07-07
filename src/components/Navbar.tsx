@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { FaRegUserCircle, FaHeart } from "react-icons/fa";
 import { MdOutlineViewHeadline } from "react-icons/md";
@@ -25,13 +26,13 @@ const Navbar = () => {
                         </li>
                     </ul>
                     </div>
-                    <Link href="/" className="text-xl text-[#ff4c11] font-mono font-bold flex items-center gap-2">
-                        <img src="/phonora_logo.png" alt="Phonora Logo" className="h-10 w-auto" />
+                    <Link href="/" className="flex items-center gap-2">
+                        <Image src="/phonora_logo.png" alt="Phonora Logo" width={160} height={10}/>
                     </Link>
                 </div>
             
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1 text-lg">
+                    <ul className="menu menu-horizontal text-base px-1">
                         <li>
                             <Link href='/'>Home</Link>
                         </li>
@@ -47,13 +48,13 @@ const Navbar = () => {
                     <button>
                         <Link href='/login' className="flex flex-col items-center align-middle">
                             <FaHeart />
-                            <span className="hidden md:inline">Wishlist</span>
+                            <span className="hidden md:inline  text-sm">Wishlist</span>
                         </Link>
                     </button>
                     <button>
                         <Link href='/login' className="flex flex-col items-center align-middle">
                             <FaRegUserCircle />
-                            <span className="hidden md:inline">Login</span>
+                            <span className="hidden md:inline text-sm">Login</span>
                         </Link>
                     </button>
                     <button className="btn btn-lg bg-[#ff4c11] text-white">
