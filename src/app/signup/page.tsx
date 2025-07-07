@@ -24,7 +24,7 @@ const  SignupPage = () => {
     <div className="min-h-screen flex items-center justify-center bg-base-200">
       <div className="w-full max-w-md shadow-xl bg-base-100 rounded-xl p-8">
         <h2 className="text-2xl font-bold">Register</h2>
-        <p className="label-text mb-6">Create a new account to get started.</p>
+        <p className="label-text mb-6 mt-2">Create a new account to get started.</p>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           {/* Full Name */}

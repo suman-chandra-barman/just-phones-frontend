@@ -22,12 +22,12 @@ const LoginPage = () => {
     <div className="min-h-screen flex items-center justify-center bg-base-200">
       <div className="w-full max-w-md shadow-xl bg-base-100 rounded-xl p-8">
         <h2 className="text-2xl font-bold">Sign In</h2>
-        <p className="label-text mb-6">Log in to your account to continue.</p>
+        <p className="label-text mb-6 mt-2">Log in to your account to continue.</p>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           {/* Email Field */}
           <div>
             <label className="label">
-              <span className="label-text">Email</span>
+              <span  className="label-text">Email</span>
             </label>
             <input
               type="email"

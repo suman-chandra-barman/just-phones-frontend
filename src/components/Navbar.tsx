@@ -3,12 +3,20 @@
 import { useAppSelector } from "@/redux/hooks";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { FaRegUserCircle, FaHeart, FaCartPlus } from "react-icons/fa";
 import { MdOutlineViewHeadline } from "react-icons/md";
 
 const Navbar = () => {
     const cart = useAppSelector((state) => state.cart);
-    const totalItems = cart.items.reduce((total, item) => total + item.quantity, 0);
+
+     const [isClient, setIsClient] = useState(false);
+
+        useEffect(() => {
+            setIsClient(true);
+        }, []);
+
+    const totalItems = cart.items?.reduce((total, item) => total + item.quantity, 0) || 0;
     
     return(
         <nav className="bg-base-100 shadow-sm">
@@ -66,7 +74,7 @@ const Navbar = () => {
                     <Link href="/cart">
                         <button className="btn btn-lg bg-[#ff4c11] text-white">
                             <FaCartPlus />
-                            <span className="badge badge-sm">{totalItems}</span>
+                            {isClient && <span className="badge badge-sm">{totalItems}</span>}
                         </button>
                     </Link>
                 </div>
