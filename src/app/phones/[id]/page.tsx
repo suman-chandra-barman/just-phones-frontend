@@ -1,11 +1,11 @@
 'use client';
 
-import { AiOutlineCamera, AiOutlineAndroid, AiOutlineHeart } from 'react-icons/ai';
-import { BsBatteryFull } from 'react-icons/bs';
+import { AiOutlineHeart } from 'react-icons/ai';
+import { BsAndroid2, BsBatteryFull } from 'react-icons/bs';
 import { FiCpu, FiWifi } from 'react-icons/fi';
-import { MdOutlineFingerprint, MdOutlineDisplaySettings, MdOutlineBluetooth } from 'react-icons/md';
+import { MdOutlineFingerprint, MdOutlineDisplaySettings, MdOutlineBluetooth, MdCameraFront } from 'react-icons/md';
 import { TbBrandGoogle, TbFlask } from 'react-icons/tb';
-import { FaShieldAlt } from 'react-icons/fa';
+import { FaCamera, FaShieldAlt } from 'react-icons/fa';
 
 export default function PhonePage() {
   return (
@@ -45,12 +45,12 @@ export default function PhonePage() {
 
           {/* Key Specs */}
           <div className="divider"></div>
-            <h3 className="text-lg font-semibold">Key Specifications</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            <div>
-              <AiOutlineAndroid className="text-xl" />
-              <p className="text-sm font-medium">Android</p>
+          <h3 className="text-lg font-semibold">Key Specifications</h3>
+          <div>
+              <BsAndroid2 className="text-xl" />
+              <p className="text-base font-medium">Android</p>
             </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             <div>
               <FiCpu className="text-xl" />
               <p className="text-sm">128GB</p>
@@ -62,7 +62,12 @@ export default function PhonePage() {
               <p className="text-xs text-gray-500">RAM</p>
             </div>
             <div>
-              <AiOutlineCamera className="text-xl" />
+              <FaCamera className="text-xl" />
+              <p className="text-sm">16MP</p>
+              <p className="text-sm text-gray-500">Main Camera</p>
+            </div>
+            <div>
+              <MdCameraFront className="text-xl" />
               <p className="text-sm">8MP</p>
               <p className="text-xs text-gray-500">Front Camera</p>
             </div>
