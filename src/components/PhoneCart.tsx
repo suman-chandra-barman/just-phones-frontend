@@ -5,7 +5,7 @@ import { AiOutlineHeart } from "react-icons/ai";
 
 const PhoneCart = () => {
   return (
-    <div className="group relative card bg-base-100 rounded-xl overflow-hidden transition-shadow duration-300 shadow-[0_4px_16px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_28px_rgba(0,0,0,0.12)]">
+    <div className="group relative card bg-white rounded-xl overflow-hidden transition-shadow duration-300 shadow-[0_4px_16px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_28px_rgba(0,0,0,0.12)]">
       {/* Wishlist Icon - Top Right (Only on hover) */}
       <button
         className="absolute top-2 right-2 z-10 opacity-0 group-hover:opacity-100 cursor-pointer transition-opacity bg-white shadow p-1 rounded-full"
@@ -19,7 +19,7 @@ const PhoneCart = () => {
           <img
             src={"https://www.mobiledokan.com/media/xiaomi-poco-f7-silver-official-image.webp"}
             alt={"Tecno Spark 40"}
-            className="rounded-xl h-40 object-contain transition-transform duration-300 group-hover:scale-120"
+            className="rounded-xl h-40 object-contain transition-transform duration-500 group-hover:scale-120"
           />
         </figure>
 

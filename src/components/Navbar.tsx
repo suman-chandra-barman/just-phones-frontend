@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FaRegUserCircle, FaHeart } from "react-icons/fa";
+import { FaRegUserCircle, FaHeart, FaCartPlus } from "react-icons/fa";
 import { MdOutlineViewHeadline } from "react-icons/md";
 
 const Navbar = () => {
@@ -46,7 +46,7 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end gap-5">
                     <button>
-                        <Link href='/login' className="flex flex-col items-center align-middle">
+                        <Link href='/wishlist' className="flex flex-col items-center align-middle">
                             <FaHeart />
                             <span className="hidden md:inline  text-sm">Wishlist</span>
                         </Link>
@@ -58,12 +58,10 @@ const Navbar = () => {
                         </Link>
                     </button>
                     <button className="btn btn-lg bg-[#ff4c11] text-white">
-                        <Link href='/cart'>
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l1.4-7H6.6L7 13zM16 19a2 2 0 11-4 0 2 2 0 014 0zm-8 0a2 2 0 11-4 0 2 2 0 014 0z" />
-                            </svg>
+                        <Link href='/phones' className="flex gap-2 items-center">
+                            <FaCartPlus />
+                            <span className="badge badge-sm">0</span>
                         </Link>
-                        <span className="badge badge-sm">0</span>
                     </button>
                 </div>
             </div>
