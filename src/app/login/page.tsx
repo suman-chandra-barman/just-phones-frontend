@@ -1,6 +1,10 @@
 'use client'
 
+import { useLoginMutation } from '@/redux/features/auth/authApi';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 
 type LoginFormInputs = {
   email: string;
@@ -13,9 +17,22 @@ const LoginPage = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<LoginFormInputs>();
+  const [login, { isLoading }] = useLoginMutation();
 
-  const onSubmit = (data: LoginFormInputs) => {
-    console.log('Login Data:', data);
+  const [loginError, setLoginError] = useState<string | null>(null);
+
+  const router = useRouter();
+
+  const onSubmit = async (data: LoginFormInputs) => {
+    try {
+      const res = await login(data).unwrap();
+      localStorage.setItem("accessToken", res.data.accessToken);
+      toast.success("Login successful!");
+      router.push("/"); 
+    } catch (error: any) {
+      console.error("Login error:", error);
+      setLoginError(error?.data?.error || "Somthing went wrong!");
+    }
   };
 
   return (
@@ -23,6 +40,14 @@ const LoginPage = () => {
       <div className="w-full max-w-md shadow-xl bg-base-100 rounded-xl p-8">
         <h2 className="text-2xl font-bold">Sign In</h2>
         <p className="label-text mb-6 mt-2">Log in to your account to continue.</p>
+
+         {/*Show error here */}
+        {loginError && (
+          <div className="mb-4 text-red-600 bg-red-100 px-4 py-2 rounded">
+            {loginError}
+          </div>
+        )}
+
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           {/* Email Field */}
           <div>
@@ -57,8 +82,8 @@ const LoginPage = () => {
           </div>
 
           {/* Submit Button */}
-          <button type="submit" className="btn bg-[#ff4c11] w-full text-white">
-            Login
+          <button type="submit" className="btn bg-[#ff4c11] w-full text-white" disabled={isLoading}>
+            {isLoading ?  "Login..." : "Login"}
           </button>
         </form>
 
