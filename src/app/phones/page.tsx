@@ -3,11 +3,12 @@
 import PhoneCart from "@/components/PhoneCart";
 import PhoneCartSkeleton from "@/components/PhoneCartSkeleton";
 import { useGetAllPhonesQuery } from "@/redux/features/phones/phonesApi";
+import { TPhone } from "@/types/common";
 import { useEffect, useState } from "react";
 
 const PhonesPage = () => {
   const {data, isLoading } = useGetAllPhonesQuery({});
-  const [phonesData, setPhonesData] = useState([]);
+  const [phonesData, setPhonesData] = useState<TPhone[]>([]);
 
   useEffect(() => {
     if (data?.data) {

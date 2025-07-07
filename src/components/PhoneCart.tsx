@@ -6,7 +6,6 @@ import Link from "next/link";
 import { AiOutlineHeart } from "react-icons/ai";
 
 const PhoneCart = ({phone} : {phone:TPhone}) => {
-  console.log("Phone Cart Data:", phone);
 
   return (
     <div className="group relative card bg-white rounded-xl overflow-hidden transition-shadow duration-300 shadow-[0_4px_16px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_28px_rgba(0,0,0,0.12)]">
@@ -18,7 +17,7 @@ const PhoneCart = ({phone} : {phone:TPhone}) => {
         <AiOutlineHeart size={20} className="text-[#ff4c11]" />
       </button>
 
-      <Link href={`/phones/${1}`} className="flex flex-col h-full">
+      <Link href={`/phones/${phone._id}`} className="flex flex-col h-full">
         <figure className="p-4">
           <Image
             src={phone.image}

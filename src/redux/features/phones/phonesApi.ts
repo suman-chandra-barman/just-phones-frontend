@@ -15,7 +15,7 @@ const phonesApi = baseApi.injectEndpoints({
     getSinglePhone: builder.query({
       query: (id: string) => {
         return {
-          url: `/eyeglasses/${id}`,
+          url: `/phones/${id}`,
           method: "GET",
         };
       },
