@@ -6,7 +6,7 @@ import { useGetAllPhonesQuery } from "@/redux/features/phones/phonesApi";
 import { TPhone } from "@/types/common";
 import { useEffect, useState } from "react";
 
-export default function Home() {
+const HomePage = () =>{
   const {data, isLoading } = useGetAllPhonesQuery({});
   const [phonesData, setPhonesData] = useState<TPhone[]>([]);
 
@@ -37,3 +37,5 @@ export default function Home() {
     </section>
   );
 }
+
+export default HomePage;

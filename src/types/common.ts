@@ -1,5 +1,5 @@
 export type TPhone = {
-  _id?: string;
+  _id: string;
   name: string;
   brand: string;
   image: string;
@@ -29,3 +29,12 @@ export type TPhone = {
     glassProtection?: string;
   };
 };
+
+export type TCartItem = {
+  _id: string;
+  name: string;
+  image: string;
+  price: number;
+  quantity: number;
+};
+
