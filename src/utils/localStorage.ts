@@ -1,4 +1,6 @@
+import { TCartItem, TWishlistItem } from "@/types/common";
 
+// cart 
 export const loadCartFromLocalStorage = () => {
   try {
     const serializedCart = localStorage.getItem("cart");
@@ -10,11 +12,33 @@ export const loadCartFromLocalStorage = () => {
   }
 };
 
-export const saveCartToLocalStorage = (state: any) => {
+export const saveCartToLocalStorage = (cart: TCartItem) => {
   try {
-    const serializedCart = JSON.stringify(state.cart);
+    const serializedCart = JSON.stringify(cart);
     localStorage.setItem("cart", serializedCart);
   } catch (e) {
     console.error("Could not save cart", e);
   }
 };
+
+// wishlist
+export const loadWishlistFromLocalStorage = () => {
+  try {
+    const data = localStorage.getItem("wishlist");
+    return data ? JSON.parse(data) : [];
+  } catch (error) {
+    console.error("Failed to load wishlist from localStorage:", error);
+    return [];
+  }
+};
+
+export const saveWishlistToLocalStorage = (wishlist: TWishlistItem) => {
+  try {
+    const data = JSON.stringify(wishlist);
+    localStorage.setItem("wishlist", data);
+  } catch (error) {
+    console.error("Failed to save wishlist to localStorage:", error);
+  }
+};
+
+

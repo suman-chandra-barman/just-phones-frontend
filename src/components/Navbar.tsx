@@ -9,8 +9,7 @@ import { MdOutlineViewHeadline } from "react-icons/md";
 const Navbar = () => {
     const cart = useAppSelector((state) => state.cart);
     const totalItems = cart.items.reduce((total, item) => total + item.quantity, 0);
-
-    console.log({cart});
+    
     return(
         <nav className="bg-base-100 shadow-sm">
             <div className="navbar container mx-auto text-[#1a2c32]">

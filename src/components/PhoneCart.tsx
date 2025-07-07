@@ -1,6 +1,7 @@
 'use client';
 
 import { addToCart } from "@/redux/features/cart/cartSlice";
+import { addToWishlist } from "@/redux/features/wishlist/wishlistSlice";
 import { useAppDispatch } from "@/redux/hooks";
 import { TPhone } from "@/types/common";
 import Image from "next/image";
@@ -19,7 +20,14 @@ const PhoneCart = ({phone} : {phone:TPhone}) => {
         className="absolute top-2 right-2 z-10 opacity-0 group-hover:opacity-100 cursor-pointer transition-opacity bg-white shadow p-1 rounded-full"
         title="Add to wishlist"
       >
-        <AiOutlineHeart size={20} className="text-[#ff4c11]" />
+        <AiOutlineHeart 
+          onClick={() => {
+            dispatch(addToWishlist({ _id, name, image, price }));
+            toast.success(`${name} added to wishlist!`);
+          }}
+          size={20} 
+          className="text-[#ff4c11]" 
+        />
       </button>
 
       <Link href={`/phones/${_id}`} className="flex flex-col h-full">

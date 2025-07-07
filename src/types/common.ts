@@ -38,3 +38,11 @@ export type TCartItem = {
   quantity: number;
 };
 
+
+export type TWishlistItem = {
+  _id: string;
+  name: string;
+  image: string;
+  price: number;
+};
+
