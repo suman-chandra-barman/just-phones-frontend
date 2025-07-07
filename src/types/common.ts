@@ -46,3 +46,10 @@ export type TWishlistItem = {
   price: number;
 };
 
+export type TJwtPayload = {
+  name: string;
+  email: string;
+  role: "User" | "Admin";
+  exp: number;
+  iat: number;
+};

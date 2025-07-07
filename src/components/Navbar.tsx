@@ -1,8 +1,10 @@
 "use client";
 
 import { useAppSelector } from "@/redux/hooks";
+import { getUserInfo } from "@/utils/auth";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaRegUserCircle, FaHeart, FaCartPlus } from "react-icons/fa";
 import { MdOutlineViewHeadline } from "react-icons/md";
@@ -10,11 +12,30 @@ import { MdOutlineViewHeadline } from "react-icons/md";
 const Navbar = () => {
     const cart = useAppSelector((state) => state.cart);
 
-     const [isClient, setIsClient] = useState(false);
+    const [isClient, setIsClient] = useState(false);
+    const [user, setUser] = useState<{ email: string } | null>(null);
+     const [showUserProfile, setShowUserProfile] = useState(false);
 
-        useEffect(() => {
-            setIsClient(true);
-        }, []);
+     const router = useRouter();
+
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
+    useEffect(() => {
+        const info = getUserInfo();
+        if (info) {
+            setUser({ email: info.email });
+        }
+    }, [user]);
+
+    const handleLogout = () => {
+        localStorage.removeItem('accessToken');
+        setShowUserProfile(false);
+        setUser(null);
+        router.push('/login');
+  };
+
+    console.log("User Info:", user);      
 
     const totalItems = cart.items?.reduce((total, item) => total + item.quantity, 0) || 0;
     
@@ -65,12 +86,31 @@ const Navbar = () => {
                             <span className="hidden md:inline  text-sm">Wishlist</span>
                         </Link>
                     </button>
-                    <button>
-                        <Link href='/login' className="flex flex-col items-center align-middle">
-                            <FaRegUserCircle />
-                            <span className="hidden md:inline text-sm">Login</span>
-                        </Link>
-                    </button>
+                    <div className="relative inline-block">
+                        <button>
+                            {user?.email && isClient ? (
+                                <div className="flex flex-col items-center cursor-pointer  align-middle" onClick={() => setShowUserProfile((prev) => !prev)}>
+                                    <FaRegUserCircle />
+                                    <span className="hidden md:inline text-sm">{user.email}</span>
+                                </div>
+                            ) : (
+                                <Link href='/login' className="flex flex-col items-center align-middle">
+                                <FaRegUserCircle />
+                                <span className="hidden md:inline text-sm">Login</span>
+                            </Link> 
+                            )} 
+                        </button>
+                         {showUserProfile && (
+                            <div className="absolute right-0 mt-2 w-32 bg-white shadow-md rounded-lg z-50">
+                                <button
+                                    onClick={handleLogout}
+                                    className="w-full btn"
+                                >
+                                    Logout
+                                </button>
+                            </div>
+                        )}
+                    </div>
                     <Link href="/cart">
                         <button className="btn btn-lg bg-[#ff4c11] text-white">
                             <FaCartPlus />
