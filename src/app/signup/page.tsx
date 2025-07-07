@@ -1,9 +1,12 @@
 'use client';
 
+import { useSignupMutation } from '@/redux/features/user/userApi';
+import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 
 type SignupFormInputs = {
-  fullName: string;
+  name: string;
   email: string;
   password: string;
   contactNo: string;
@@ -16,8 +19,20 @@ const  SignupPage = () => {
     formState: { errors },
   } = useForm<SignupFormInputs>();
 
-  const onSubmit = (data: SignupFormInputs) => {
-    console.log('Signup Data:', data);
+  const [signup, { isLoading }] = useSignupMutation();
+
+  const router = useRouter();
+
+  const onSubmit = async (data: SignupFormInputs) => {
+    try {
+      const res = await signup(data).unwrap();
+      console.log("Signup success:", res);
+      toast.success("Signup successful!");
+      router.push('/login'); 
+    } catch (error: any) {
+      toast.error(error?.data?.message || "Signup failed!");
+      console.error("Signup error:", error);
+    }
   };
 
   return (
@@ -36,10 +51,10 @@ const  SignupPage = () => {
               type="text"
               placeholder="Sam Barman"
               className="input input-bordered w-full"
-              {...register('fullName', { required: 'Full name is required' })}
+              {...register('name', { required: 'Full name is required' })}
             />
-            {errors.fullName && (
-              <p className="text-red-500 text-sm mt-1">{errors.fullName.message}</p>
+            {errors.name && (
+              <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
             )}
           </div>
 
@@ -98,8 +113,8 @@ const  SignupPage = () => {
           </div>
 
           {/* Submit Button */}
-          <button type="submit" className="btn bg-[#ff4c11] w-full text-white">
-            Sign Up
+          <button type="submit" className="btn bg-[#ff4c11] w-full text-white" disabled={isLoading}>
+            {isLoading ? "Signing up..." : "Sign Up"}
           </button>
         </form>
 
