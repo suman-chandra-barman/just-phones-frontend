@@ -3,10 +3,12 @@
 import Link from "next/link";
 import { AiOutlineHeart } from "react-icons/ai";
 
-const PhoneCart = () => {
+const PhoneCart = ({phone}) => {
+  console.log("Phone Cart Data:", phone);
+  
   return (
     <div className="group relative card bg-white rounded-xl overflow-hidden transition-shadow duration-300 shadow-[0_4px_16px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_28px_rgba(0,0,0,0.12)]">
-      {/* Wishlist Icon - Top Right (Only on hover) */}
+      {/* Wishlist*/}
       <button
         className="absolute top-2 right-2 z-10 opacity-0 group-hover:opacity-100 cursor-pointer transition-opacity bg-white shadow p-1 rounded-full"
         title="Add to wishlist"
