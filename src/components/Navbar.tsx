@@ -15,27 +15,28 @@ const Navbar = () => {
     const [isClient, setIsClient] = useState(false);
     const [user, setUser] = useState<{ email: string } | null>(null);
      const [showUserProfile, setShowUserProfile] = useState(false);
+     const [loading, setLoading] = useState(true);
 
      const router = useRouter();
 
     useEffect(() => {
         setIsClient(true);
     }, []);
+
     useEffect(() => {
         const info = getUserInfo();
         if (info) {
             setUser({ email: info.email });
+            setLoading(false);
         }
-    }, [user]);
+    }, []);
 
     const handleLogout = () => {
         localStorage.removeItem('accessToken');
         setShowUserProfile(false);
         setUser(null);
         router.push('/login');
-  };
-
-    console.log("User Info:", user);      
+  };    
 
     const totalItems = cart.items?.reduce((total, item) => total + item.quantity, 0) || 0;
     
@@ -88,7 +89,8 @@ const Navbar = () => {
                     </button>
                     <div className="relative inline-block">
                         <button>
-                            {user?.email && isClient ? (
+                            {loading ? null : (
+                                user?.email ? (
                                 <div className="flex flex-col items-center cursor-pointer  align-middle" onClick={() => setShowUserProfile((prev) => !prev)}>
                                     <FaRegUserCircle />
                                     <span className="hidden md:inline text-sm">{user.email}</span>
@@ -98,7 +100,7 @@ const Navbar = () => {
                                 <FaRegUserCircle />
                                 <span className="hidden md:inline text-sm">Login</span>
                             </Link> 
-                            )} 
+                            ) )} 
                         </button>
                          {showUserProfile && (
                             <div className="absolute right-0 mt-2 w-32 bg-white shadow-md rounded-lg z-50">
