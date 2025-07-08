@@ -1,4 +1,4 @@
-import { TCartItem, TWishlistItem } from "@/types/common";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 // cart 
 export const loadCartFromLocalStorage = () => {
@@ -12,7 +12,7 @@ export const loadCartFromLocalStorage = () => {
   }
 };
 
-export const saveCartToLocalStorage = (cart: TCartItem) => {
+export const saveCartToLocalStorage = (cart:any) => {
   try {
     const serializedCart = JSON.stringify(cart);
     localStorage.setItem("cart", serializedCart);
@@ -32,7 +32,7 @@ export const loadWishlistFromLocalStorage = () => {
   }
 };
 
-export const saveWishlistToLocalStorage = (wishlist: TWishlistItem) => {
+export const saveWishlistToLocalStorage = (wishlist:any) => {
   try {
     const data = JSON.stringify(wishlist);
     localStorage.setItem("wishlist", data);
