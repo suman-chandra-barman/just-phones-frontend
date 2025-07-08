@@ -2,8 +2,11 @@ import { TJwtPayload } from "@/types/common";
 import { jwtDecode } from "jwt-decode";
 
 // get user
-export const getUserInfo = (): TJwtPayload | null => {
+export const getUserInfo = () => {
   try {
+    if (typeof window === "undefined") {
+      return null;
+    }
     const token = localStorage.getItem('accessToken');
     if (!token) return null;
 
@@ -14,3 +17,5 @@ export const getUserInfo = (): TJwtPayload | null => {
     return null;
   }
 };
+
+ 
